@@ -1,0 +1,42 @@
+
+ Running on public URL: https://41e91461758901ddf0.gradio.live
+
+
+# Python API documentation for https://41e91461758901ddf0.gradio.live/
+API Endpoints: 1
+
+1. Install the Python client [docs](https://www.gradio.app/guides/getting-started-with-the-python-client) if you don't already have it installed. 
+
+```bash
+pip install gradio_client
+```
+
+2. Find the API endpoint below corresponding to your desired function in the app. Copy the code snippet, replacing the placeholder values with your own input data. 
+
+### API Name: /predict_digit
+
+
+```python
+from gradio_client import Client, handle_file
+
+client = Client("https://41e91461758901ddf0.gradio.live")
+result = client.predict(
+	image_dict={"background": handle_file('https://raw.githubusercontent.com/gradio-app/gradio/main/test/test_files/bus.png'), "layers": [], "composite": None},
+	api_name="/predict_digit",
+)
+print(result)
+```
+
+
+Accepts 1 parameter:
+
+image_dict:
+- Type: dict(background: filepath | None, layers: list[filepath], composite: filepath | None, id: str | None)
+- Required
+- The input value that is provided in the Draw a Digit (0-9) Imageeditor component. null
+
+Returns 1 element:
+
+- Type: dict(label: str | int | float | None, confidences: list[dict(label: str | int | float | None, confidence: float | None)] | None)
+- The output value that appears in the "Top Predictions" Label component.
+
